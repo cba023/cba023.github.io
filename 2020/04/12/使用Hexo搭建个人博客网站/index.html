@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用hexo搭建个人博客网站 
+ | 陈波·博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="该案例是在Mac OS环境下实现，其他平台可以借鉴但不能完全照搬。    Hexo官网：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;   Hexo官方配置文档: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;configuration   hiker主题GitHub地址（包含文档）：https:&#x2F;&#x2F;github.com&#x2F;iTimeTraveler&#x2F;hexo-theme-hiker.git theme">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hexo搭建个人博客网站 
+">
+<meta property="og:url" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/index.html">
+<meta property="og:site_name" content="陈波·博客">
+<meta property="og:description" content="该案例是在Mac OS环境下实现，其他平台可以借鉴但不能完全照搬。    Hexo官网：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;   Hexo官方配置文档: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;configuration   hiker主题GitHub地址（包含文档）：https:&#x2F;&#x2F;github.com&#x2F;iTimeTraveler&#x2F;hexo-theme-hiker.git theme">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866779735407.jpg">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866793590067.jpg">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866820161598.jpg">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866844702507.jpg">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866860164961.jpg">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866860492630.jpg">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866870542245.jpg">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866907429987.jpg">
+<meta property="og:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866907876267.jpg">
+<meta property="article:published_time" content="2020-04-12T07:40:37.000Z">
+<meta property="article:modified_time" content="2021-06-08T08:07:54.392Z">
+<meta property="article:author" content="陈波">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cba023.github.io/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866779735407.jpg">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("/css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("/css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("/css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    
+<link rel="stylesheet" href="/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-使用Hexo搭建个人博客网站" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      使用Hexo搭建个人博客网站 
+
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" class="article-date">
+	  <time datetime="2020-04-12T07:40:37.000Z" itemprop="datePublished">2020-04-12</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>该案例是在Mac OS环境下实现，其他平台可以借鉴但不能完全照搬。 </p>
+</blockquote>
+<blockquote>
+<p>Hexo官网：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
+</blockquote>
+<blockquote>
+<p>Hexo官方配置文档: <a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration">https://hexo.io/docs/configuration</a></p>
+</blockquote>
+<blockquote>
+<p>hiker主题GitHub地址（包含文档）：<a target="_blank" rel="noopener" href="https://github.com/iTimeTraveler/hexo-theme-hiker.git">https://github.com/iTimeTraveler/hexo-theme-hiker.git themes/hiker</a></p>
+</blockquote>
+<p>要说了解Hexo,还得从简书开始，简书作为国内知名的创作社区，竟然在使用百度搜索时会在自己的链接下方有一个”<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4eaddcbe4d12">个人博客搭建</a>“的入口，如下：</p>
+<p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866779735407.jpg" alt="搜索简书"></p>
+<p>一丝好奇让我随性的打开了这个链接,进入后，我立马见到了一句充满诱惑力的标题：<strong>“5分钟 搭建免费个人博客”</strong>，我简直是捡到了宝。简单看了下，好像不难，由此我开始一步一步的实现免费建站。</p>
+<h2 id="登入GitHub"><a href="#登入GitHub" class="headerlink" title="登入GitHub"></a>登入GitHub</h2><p>因为我是GitHub的用户，我直接进入创建资源库，这里我填写的<a href="cba023.github.io">cba023.github.io</a>, cba023是我的用户名，这里要和GitHub的账户名保持一致，后面访问的博客地址也是这一个。</p>
+<p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866793590067.jpg" alt="创建GitHub资源库"></p>
+<p>以<code>public</code>方式创建，这样能保证上传后，博客能够在公网访问到，点击<code>Create respository</code>完成创建资源库。</p>
+<h2 id="Hexo环境搭建"><a href="#Hexo环境搭建" class="headerlink" title="Hexo环境搭建"></a>Hexo环境搭建</h2><p>Mac环境下搭建非常简单，使用<code>Homebrew</code>安装<code>Node.js</code>。接下来就是打开终端，开始噼里啪啦。</p>
+<p>安装nvm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install nvm</span><br><span class="line">mkdir ~/.nvm</span><br><span class="line"><span class="built_in">export</span> NVM_DIR=~/.nvm</span><br><span class="line">.$(brew --prefix nvm)/nvm.sh </span><br></pre></td></tr></table></figure>
+
+<p>安装完成，重启终端。输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install latest</span><br></pre></td></tr></table></figure>
+
+<p>保持网络通畅，等待片刻，Hexo依赖的环境就装好了。接下来就是主角<code>Hexo</code>登场。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<p>需要输入用户密码。稍等片刻，安装完成。安装过程可能有一些偶然的错误，会在控制台返回错误信息，然后我们可以把错误信息复制到网络上检索就会有相关的解决方案。</p>
+<h2 id="博客建站"><a href="#博客建站" class="headerlink" title="博客建站"></a>博客建站</h2><h3 id="生成工作文件夹"><a href="#生成工作文件夹" class="headerlink" title="生成工作文件夹"></a>生成工作文件夹</h3><p>首先需要在用户文件夹建立博客工作区文件夹，我选择的是<code>~/Documents</code>路径</p>
+<p>打开指定的文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Documents</span><br></pre></td></tr></table></figure>
+
+<p>初始化hexo工作文件目录，文件夹名和GitHub中创建的资源库文件目录一致，我创建的是<code>hexo init cba023.github.io</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;username&gt;.github.io</span><br></pre></td></tr></table></figure>
+<p>在<code>Documents</code>文件夹下多了一个<code>&lt;username&gt;.github.io</code>目录，后面我们统称为<strong>工作文件夹</strong>，里面有一些文件，其中有一个<code>_config.yml</code>文件夹，这是Hexo的配置文件。我们主要的配置是在这里完成的，后面再做讲解。</p>
+<h3 id="让博客站跑起来"><a href="#让博客站跑起来" class="headerlink" title="让博客站跑起来"></a>让博客站跑起来</h3><p>使用终端进入到刚才生成的<strong>工作文件夹</strong><code>&lt;username&gt;.github.io</code>目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;username&gt;.github.io</span><br></pre></td></tr></table></figure>
+
+<p>接着输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>终端会打印很多信息，最后还会显示一个链接地址。这个时候我们的博客就可以在本地计算机打开了，我们在浏览器中输入<strong>本地服务链接</strong><code>http://localhost:4000</code>，可以看到：</p>
+<p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866820161598.jpg" alt="landscape主题"></p>
+<p>如果看到了<code>Hello World</code>, 说明本地服务已经跑起来了。接下来我们只需要配置里面的参数，就可以让这个服务为我们所用。</p>
+<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><h3 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h3><p>Hexo默认配置了一个主题<code>landscape</code>。我去<a target="_blank" rel="noopener" href="https://hexo.io/themes/">官方的主题库</a>里找到了<code>hiker</code>主题并换成了它，主题可以用git从GitHub克隆。新开一个终端窗口，定位到<strong>工作文件夹</strong>下。键入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iTimeTraveler/hexo-theme-hiker.git themes/hiker</span><br></pre></td></tr></table></figure>
+
+<p>这样hiker主题就被克隆下来了。<br>这时候我们进入<strong>工作文件夹</strong>下的<code>_config.yml</code>,把主题配置从<code>theme: landscape</code>改成：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">hiker</span></span><br></pre></td></tr></table></figure>
+
+<p>这样主题就成功设置成<code>hiker</code>了，这时候<strong>重启Hexo服务</strong>（开启服务的终端窗口键入<code>ctrl + c</code>，也可以关闭之前运行本地服务的终端窗口，新开一个终端窗口）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>再打开<code>localhost:4000</code>地址，发现网页画风变了。</p>
+<p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866844702507.jpg" alt="hiker主题"></p>
+<p>这样，主题更换就算完成了，该网页可以滚动，往上面滚动网页可以看到更多的内容。</p>
+<h3 id="设置标签"><a href="#设置标签" class="headerlink" title="设置标签"></a>设置标签</h3><p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866860164961.jpg" alt="hiker主题"></p>
+<p>这是<code>hiker</code>主题的首页向上滚动后的界面，默认包含5个标签：<code>Home</code>, <code>Archives</code>, <code>Categories</code>, <code>Tags</code>, <code>About</code>。现在还是英文的标题，打开<strong>工作文件夹</strong>下的<code>_config.yml</code>，修改如下部分内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">陈波·博客</span></span><br><span class="line"><span class="attr">subtitle:</span> </span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span> </span><br><span class="line"><span class="attr">author:</span> <span class="string">陈波</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br></pre></td></tr></table></figure>
+<p>这里我们除了更改语言环境，顺便把博客拥有人的信息填写下，然后<strong>重启Hexo服务</strong>，刷新浏览器中<strong>本地服务链接</strong>的网页，网页变成中文了，而且博主的名字成了自己的名字。<br>Hexo博客功能的配置主要是在<strong>工作文件夹</strong>下的<code>_config.yml</code>中配置完成的，里面的每一项都是一个配置，可以自己去查阅资料并付诸实践。  </p>
+<p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866860492630.jpg" alt="修改语言后"></p>
+<p>然后我们试着切换网页的顶部标签，<code>首页</code>、<code>归档</code>切换都正常，但是<code>分类</code>、<code>标签</code>、<code>关于</code>在点击后都会跳转异常，出现<code>Cannot GET..</code>的错误，显然这是是路径找不到的原因，我们在工作文件夹下执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br><span class="line">hexo new page tags</span><br><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
+
+<p>执行了上述3条命令后，<strong>工作文件夹</strong>下的<code>source文件夹</code>下会生成三个文件夹，如下：</p>
+<p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866870542245.jpg" alt="source文件夹"></p>
+<p>三个文件夹下各自有一个<code>index.md</code>文件，打开后内分别如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2020-04-12 18:20:14</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2020-04-12 18:20:21</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: about</span><br><span class="line">date: 2020-04-12 18:23:16</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>接着分别将他们修改成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2020-04-12 18:20:14</span><br><span class="line">type: categories</span><br><span class="line">layout: categories</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2020-04-12 18:20:21</span><br><span class="line">type: tags</span><br><span class="line">layout: tags</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 关于</span><br><span class="line">date: 2020-04-12 18:23:16</span><br><span class="line">type: about</span><br><span class="line">layout: about</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>这时候我们再进入网页，就不会有之前的<code>Cannot GET..</code>错误发生啦。</p>
+<h3 id="配置站内搜索"><a href="#配置站内搜索" class="headerlink" title="配置站内搜索"></a>配置站内搜索</h3><p>网页右上角有一个搜索按钮，点击后能显示搜索框，但是不能搜索。这时候还需要使用终端定位到<strong>工作文件夹</strong>执行如下命令来开启搜索。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -S hexo-generator-json-content</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以搜索啦。</p>
+<h3 id="配置小结"><a href="#配置小结" class="headerlink" title="配置小结"></a>配置小结</h3><p>通过上述的一系列的配置，本地服务算是基本正常了，还有更多的配置，这里我不再细说了。毕竟相关的配置还是很多的，需要自己一步一步地探索。本人就是在查阅大量网络资料并通过实践来实现整个博客功能的。</p>
+<h2 id="编写并发布文章"><a href="#编写并发布文章" class="headerlink" title="编写并发布文章"></a>编写并发布文章</h2><h3 id="编写第一篇文章"><a href="#编写第一篇文章" class="headerlink" title="编写第一篇文章"></a>编写第一篇文章</h3><p>终于可以发布文章了，Hexo发布文章是通过Markdown形式来发布的，发布后，Hexo再将Markdown转换成HTML形式显示到网页上。不过这里的Markdown稍微有点点讲究，标题需要用Hexo规定的格式来。我们先来创建一篇文章吧。<br>终端定位到<strong>工作文件夹</strong>，键入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;第一篇文章&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;工作文件夹&gt;/source/_post/</code>路径下会生成<code>第一篇文章.md</code></p>
+<p>我们使用<code>访达</code>找到并打开该文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 你好 Hexo</span><br><span class="line">date: 2020-04-12 18:57:32</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>我们可以给这一篇文章添加分类和标签，然后写入正文，编辑内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 你好 Hexo</span><br><span class="line">date: 2020-04-12 18:57:32</span><br><span class="line">categories: </span><br><span class="line">- Hexo学习</span><br><span class="line">tags:</span><br><span class="line">- hexo</span><br><span class="line">- 经验</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在Hexo的Markdown中，上述片段中其实已经包含大标题了，所以我们可以只在在下面写入正文</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 第一章</span></span><br><span class="line"></span><br><span class="line"><span class="section">### 1.1  Hello hexo</span></span><br><span class="line"></span><br><span class="line">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">### 1.2  Dear hexo</span></span><br><span class="line"></span><br><span class="line">呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵</span><br><span class="line"></span><br><span class="line"><span class="section">### 1.1  See you again hexo</span></span><br><span class="line"></span><br><span class="line">嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; [<span class="string">单身交友点此处</span>](<span class="link">https://github.com/cba023</span>)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>编辑并保存该文件，这样就算写好一篇文章了，可以看出，Hexo发文的标题是由文件内部的标题决定的，与文件名无关</p>
+<h3 id="本地服务预览编写的博文"><a href="#本地服务预览编写的博文" class="headerlink" title="本地服务预览编写的博文"></a>本地服务预览编写的博文</h3><p>这时候不需要发布文章就能在<code>localhost:4000</code>中看到刚才编写的文章了。</p>
+<p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866907429987.jpg" alt="本地服务中有了新文章"></p>
+<p>点击查看文章内容</p>
+<p><img src="/2020/04/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/15866907876267.jpg" alt="新文章内容"></p>
+<p>是不是一切OK。</p>
+<h3 id="发布到线上"><a href="#发布到线上" class="headerlink" title="发布到线上"></a>发布到线上</h3><p>如果那么精彩的博文只能自己一个人看到，只能说是莫大的遗憾，为了不让遗憾上演，我们接下来把整个文章推送到我们之前配置的GitHub链接。<br>第一次推送需要安装本地依赖，终端定位到<strong>工作文件夹</strong>执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>我们每次发布文章需要向远程把我们的Hexo工作文件夹更改推送过去，执行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>推送成功后，我们可以访问远程的服务上的文章啦。删除文章同理，删除<code>_post</code>文件夹里的某一篇文章，本地同步到远程就会覆盖远程的服务。</p>
+<p>就是这么简单！✌️✌️</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+
+<script src="/js/vdonate.js"></script>
+
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章不错，欢迎打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: '/about/donate/images/wechat_qrcode.jpg',
+  alipayImage: '/about/donate/images/alipay_qrcode.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>陈波</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2020/04/12/使用Hexo搭建个人博客网站/" target="_blank" title="使用Hexo搭建个人博客网站 
+">https://cba023.github.io/2020/04/12/使用Hexo搭建个人博客网站/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80OTYwNy8yNjA5OA==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/07/TableViewReuse/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          TableViewReuse，一句话搞定TableViewCell、Header或Footer的复用
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%85%A5GitHub"><span class="nav-number">1.</span> <span class="nav-text">登入GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">Hexo环境搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99"><span class="nav-number">3.</span> <span class="nav-text">博客建站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%B7%A5%E4%BD%9C%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">3.1.</span> <span class="nav-text">生成工作文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A9%E5%8D%9A%E5%AE%A2%E7%AB%99%E8%B7%91%E8%B5%B7%E6%9D%A5"><span class="nav-number">3.2.</span> <span class="nav-text">让博客站跑起来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">开始使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">设置主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%A0%87%E7%AD%BE"><span class="nav-number">4.2.</span> <span class="nav-text">设置标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2"><span class="nav-number">4.3.</span> <span class="nav-text">配置站内搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%B0%8F%E7%BB%93"><span class="nav-number">4.4.</span> <span class="nav-text">配置小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E5%B9%B6%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-number">5.</span> <span class="nav-text">编写并发布文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-number">5.1.</span> <span class="nav-text">编写第一篇文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E9%A2%84%E8%A7%88%E7%BC%96%E5%86%99%E7%9A%84%E5%8D%9A%E6%96%87"><span class="nav-number">5.2.</span> <span class="nav-text">本地服务预览编写的博文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E5%88%B0%E7%BA%BF%E4%B8%8A"><span class="nav-number">5.3.</span> <span class="nav-text">发布到线上</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <!-- <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p> -->
+	      <p id="copyRightEn">Copyright &copy; 2016 - 2021 陈波·博客 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+  
+<script src="/js/home.js"></script>
+
+
+
+
+  
+<script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            陈波·博客
+          </div>
+          <div class="panel-body">
+            Copyright © 2021 陈波 All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
