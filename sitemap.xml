@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cba023.github.io/posts/4e3de635/</loc>
+    
+    <lastmod>2024-07-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://cba023.github.io/tags/index.html</loc>
     
     <lastmod>2023-08-08</lastmod>
@@ -75,15 +84,6 @@
   
   <url>
     <loc>https://cba023.github.io/posts/8f33a448/</loc>
-    
-    <lastmod>2023-08-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cba023.github.io/posts/4e3de635/</loc>
     
     <lastmod>2023-08-08</lastmod>
     
